@@ -3,11 +3,14 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ../programs/neovim
-    ../services/screenlocker.nix
-    ../services/picom.nix
-    ../services/polybar
+    # ../programs/neovim
+    # ../services/screenlocker.nix
+    # ../services/picom
+    # ../services/polybar
+    ../programs/rofi
     ../backgrounds
+    ../programs/zsh
+    # ../services/bspwm
   ];
 
   home.file.".config/nixpkgs/config.nix".text = ''
@@ -32,9 +35,6 @@
 
   };
 
-  programs.rofi = {
-    enable = true;
-  };
 
 
   home.packages = with pkgs; [
