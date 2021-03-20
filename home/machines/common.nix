@@ -35,10 +35,14 @@
 
   };
 
+  home.sessionVariables = {
+    NAS = "~/NAS";
+  };
 
 
   home.packages = with pkgs; [
     spotify-tui
     bitwarden-cli
+    conda
   ];
 }

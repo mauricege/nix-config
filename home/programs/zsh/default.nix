@@ -10,6 +10,9 @@ programs.zsh = {
         gs = "git status";
         vi = "nvim";
         vim = "nvim";
+        ssh="TERM=xterm-256color ssh";
+        please="fuck";
+
     };
     history = {
         expireDuplicatesFirst = true;
@@ -31,6 +34,7 @@ programs.zsh = {
 
     initExtra = ''
       eval $(starship init zsh)
+      eval $(thefuck --alias)
       autopair-init
                               '';
 
@@ -54,6 +58,14 @@ programs.zsh = {
           sha256 = "0kf78p1k8d6kzcqjcxn1nfki6p76kqiv4zlc89zzhsphmid18z0y";
         };
         file = "zsh-z.plugin.zsh";
+      }
+      {
+        name = "zsh-async";
+        file = "async.zsh";
+        src = builtins.fetchGit {
+          url = "https://github.com/mafredri/zsh-async";
+          rev = "bbbc92bd01592513a6b7739a45b7911af18acaef";
+        };
       }
       {
         name = "zsh-syntax-highlighting";
@@ -85,6 +97,16 @@ programs.zsh = {
         };
         file = "autopair.zsh";
       }
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.1.0";
+          sha256 = "0snhch9hfy83d4amkyxx33izvkhbwmindy0zjjk28hih1a9l2jmx";
+       };
+      }
     ];
   };
 
@@ -94,5 +116,7 @@ programs.zsh = {
     
   home.packages = [
       pkgs.starship
+      pkgs.thefuck
+      pkgs.bottom
   ];
 }
