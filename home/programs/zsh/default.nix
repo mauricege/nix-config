@@ -12,6 +12,7 @@ programs.zsh = {
         vim = "nvim";
         ssh="TERM=xterm-256color ssh";
         please="fuck";
+        conda-init="eval \"$(conda shell.$(basename $SHELL) hook)\"";
 
     };
     history = {
